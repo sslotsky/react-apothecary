@@ -9,7 +9,7 @@
     "compile": "rm -rf dist && mkdir dist && babel -d dist/ src/"
   },
   "peerDependencies": {
-    "react": "15.x 16.x",
+    "react": "15.x || 16.x",
     "apothecary": "0.x"
   },
   "devDependencies": {

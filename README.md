@@ -108,7 +108,7 @@ export default tunnel(state => ({ n: state.n }), {
 In this case our `Counter` component will receive `inc` and `dec` props. When these are
 executed, they will change the value of `n` in the store.
 
-##### Advanced Usage: Using `fromProps(inputProps, outputProps, state)`
+##### Advanced Usage: Using `fromProps(inputProps, outputProps, state) -> actions`
 
 A second way to specify the actions is to use the `fromProps` function. Consider this example:
 
