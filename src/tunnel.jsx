@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
 
-export default function connect(select, actions) {
+export default function connect(select, actions = {}) {
   return C =>
     class extends Component {
       static contextTypes = {

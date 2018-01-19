@@ -5102,9 +5102,9 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apothecary@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/react-apothecary/-/react-apothecary-0.4.0.tgz#579be7659ac50a8c8539bff8f9dc8b2457ed9df0"
+react-apothecary@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/react-apothecary/-/react-apothecary-0.4.2.tgz#5ca077998eb5b3b7201101e60d79af0d92498051"
   dependencies:
     prop-types "^15.6.0"
 
