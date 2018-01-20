@@ -53,7 +53,7 @@ export default function connect(select, actions = {}) {
         return Object.entries(actionProps).reduce(
           (mapped, [name, a]) => ({
             ...mapped,
-            [name]: () => this.context.store.dispatch(a)
+            [name]: (...args) => this.context.store.dispatch(a(...args))
           }),
           {}
         );
