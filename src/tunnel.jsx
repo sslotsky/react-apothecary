@@ -22,12 +22,12 @@ export default function connect(select, actions = {}) {
 
       componentDidMount() {
         this.mounted = true;
-        this.context.store.subscribe(this.listen);
+        this.cancel = this.context.store.subscribe(this.listen);
       }
 
       componentWillUnmount() {
         this.mounted = false;
-        this.context.store.unsubscribe(this.listen);
+        this.cancel();
       }
 
       rawState() {
