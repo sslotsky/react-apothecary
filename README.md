@@ -36,9 +36,9 @@ import React from "react";
 import { split } from "apothecary";
 import { tunnel } from "react-apothecary";
 
-const increment = split(n => n + 1, "n");
+const increment = () => split(n => n + 1, "n");
 
-const decrement = split(n => n - 1, "n");
+const decrement = () => split(n => n - 1, "n");
 
 function Counter({ n, inc, dec }) {
   return (
@@ -95,9 +95,9 @@ Normally we use a flat object literal made up of `apothecary` actions.
 Let's look at the original example again:
 
 ```javascript
-const increment = split(n => n + 1, "n");
+const increment = () => split(n => n + 1, "n");
 
-const decrement = split(n => n - 1, "n");
+const decrement = () => split(n => n - 1, "n");
 
 export default tunnel(state => ({ n: state.n }), {
   inc: increment,
@@ -116,9 +116,9 @@ A second way to specify the actions is to use the `fromProps` function. Consider
 import { split } from 'apothecary';
 import { fromProps } from 'react-apothecary';
 
-const increment = step => split(n => n + step, "n");
+const increment = step => () => split(n => n + step, "n");
 
-const decrement = step => split(n => n - step, "n");
+const decrement = step => () => split(n => n - step, "n");
 
 export default tunnel(state => ({ n: state.n }), fromProps(props => ({
   inc: increment(props.step),
