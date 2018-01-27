@@ -28,7 +28,7 @@ export default () => <Bridge store={store}><App /></Bridge>;
 
 Use this HOC to connect your component to the `apothecary` store. The first argument is
 used to inject properties from the store into your component. The second argument can be
-used to inject actions, which `react-apothecary` will automatically bind to the `dispatch`.
+used to inject mutators, which `react-apothecary` will automatically bind to the `dispatch`.
 Example:
 
 ```javascript
@@ -81,9 +81,9 @@ the value of `n`:
 Assuming `n` is equal to `1` in the initial state, our component will render with an `n`
 equal to `4`.
 
-#### Second argument: `actions`
+#### Second argument: `mutators`
 
-The second argument is for injecting `apothecary` actions into your component. The `tunnel` HOC will take
+The second argument is for injecting `apothecary` mutators into your component. The `tunnel` HOC will take
 care of binding them to the `dispatch`, so that your component doesn't need to keep a
 reference to the `dispatch`. This means that calling the function from the component will
 result in a state change in the store. There is a standard and a more advanced way to use this,
@@ -91,8 +91,7 @@ both described below.
 
 ##### Standard Usage: Object Literals
 
-Normally we use a flat object literal made up of `apothecary` actions. 
-Let's look at the original example again:
+Normally we use a flat object literal made up of higher order `apothecary` mutators. Let's look at the original example again:
 
 ```javascript
 const increment = () => split(n => n + 1, "n");
@@ -105,12 +104,11 @@ export default tunnel(state => ({ n: state.n }), {
 })(Counter);
 ```
 
-In this case our `Counter` component will receive `inc` and `dec` props. When these are
-executed, they will change the value of `n` in the store.
+In this case our `Counter` component will receive `inc` and `dec` props. When these are executed, they will change the value of `n` in the store.
 
-##### Advanced Usage: Using `fromProps(inputProps, outputProps, state) -> actions`
+##### Advanced Usage: Using `fromProps(inputProps, outputProps, state) -> mutators`
 
-A second way to specify the actions is to use the `fromProps` function. Consider this example:
+A second way to specify the mutators is to use the `fromProps` function. Consider this example:
 
 ```javascript
 import { split } from 'apothecary';
@@ -127,7 +125,7 @@ export default tunnel(state => ({ n: state.n }), fromProps(props => ({
 ```
 
 In this case, we'd render the component with a `step` prop that indicates how much `n` should
-change by when we execute our actions:
+change by when we execute our mutators:
 
 ```javascript
 <Counter step={5} />
@@ -140,7 +138,7 @@ two more arguments. Here are all the arguments described in order:
 2. `outputProps`: the props that were computed as a result of the `select` function
 3. `state`: the raw `apothecary` state.
 
-These are provided in case they are helpful in the act of composing your actions. Most
+These are provided in case they are helpful in the act of composing your mutators. Most
 of the time, the first argument should be sufficient.
 
 ## Contributions
